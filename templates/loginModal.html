@@ -1,0 +1,29 @@
+<div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 justify-center items-center p-5 flex" id="login-modal">
+    <div class="relative w-2/6 mx-auto max-w-screen-md my-6 rounded">
+        <!-- content -->
+        <div class="shadow-lg bg-white rounded">
+            <!-- header -->
+            <div class="bg-red-medium flex justify-between p-3 rounded-t">
+                <p class="font-extrabold text-white text-2xl">LOGIN</p>
+                <span class="cursor-pointer" id="login-modal-cancel">X</span>
+            </div>
+            <!-- body -->
+            <div class="p-2" id="login-modal-body">
+                <form class="flex flex-col items-center" id="login-form">
+                    <div class="flex flex-col w-full">
+                        <label for="username-input" class="text-xl font-bold mb-1">Email address</label>
+                        <input name="username-input" id="username-input" type="text" class="border shadow h-8 rounded px-2"/>
+                    </div>
+                    <div class="flex flex-col w-full mb-5">
+                        <label for="password-input" class="text-xl font-bold mb-1">Password</label>
+                        <input name="password-input" id="password-input" type="password" class="border shadow h-8 rounded px-2"/>
+                    </div>
+                    <p class="text-red-500 mb-5 hidden" id="error-message"></p>
+                    <button type="submit" class="w-4/6 bg-blue-medium mb-5 py-2 rounded text-white font-bold">LOG IN</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="login-modal-overlay"></div>
