@@ -19,13 +19,36 @@ const logoutOnclick = () => {
     })
 }
 
+async function getUser(token) {
+    try {
+        const response = await axios.get('/user/api/get-user', {
+            headers: {
+                'content-type': 'application/json',
+                Authorization: `Token ${token}`
+            }
+        })
+        if(response.status === 200) {
+            const user = response.data
+            return user
+        }
+    } catch (error) {
+        console.log(error.response.data)
+    }
+
+}
+
 //run first
-function authHandler() {
+async function authHandler() {
     const token = localStorage.getItem('token');
     const authSection = document.getElementById('auth-section');
     if(token){
         console.log("logged");
+
+        const user = await getUser(token);
+        console.log(user)
+
         authSection.innerHTML= `
+        <a href="#" id="user-link" class="text-white font-semibold mr-5 capitalize">${user.username}</a>
         <a href="#" id="logout-link" class="text-white font-semibold">LOGOUT</a>
         `
         logoutOnclick();
@@ -37,7 +60,6 @@ function authHandler() {
         loginOnclick();
     }
 }
-
 authHandler()
 
 const loginModalCancel = document.getElementById('login-modal-cancel')
